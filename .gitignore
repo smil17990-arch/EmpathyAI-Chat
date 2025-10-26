@@ -1,0 +1,12 @@
+# 巨大なデータやログを無視する
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.pdf
+*.zip
+
+# Pythonのキャッシュファイルを無視する
+__pycache__/
+.DS_Store
+

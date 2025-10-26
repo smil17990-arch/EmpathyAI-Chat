@@ -1,3 +1,4 @@
+google-generativeai
 streamlit
 google-generativeai  <-- この名前が正解です
 

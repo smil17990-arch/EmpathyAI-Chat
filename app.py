@@ -1,8 +1,7 @@
 
 import os
 import streamlit as st
-# Vertex AI SDK (google-cloud-aiplatform) を使用
-from google.cloud import aiplatform
+from google.cloud import aiplatform # ← 代替SDKのインポート
 
 # ページ設定 (最上部で実行)
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
@@ -11,7 +10,8 @@ st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
 try:
     # 認証情報を初期化し、プロジェクトIDを設定（ここでキー認証が行われる）
     # ★ プロジェクトIDを必ず置き換えること
-    aiplatform.init(project='digital-vim-471122-t5', location='us-central1') 
+    aiplatform.init(project='digital-vim-471122-t5
+', location='us-central1') 
     
     # クライアント初期化（Vertex AI SDKを使用）
     client = aiplatform.GenerativeModel(
@@ -30,7 +30,6 @@ st.markdown("悩みや出来事を話してください。私が受け止めま�
 
 # 会話履歴を保持するためのチャットセッションを開始
 if 'chat_session' not in st.session_state:
-    # Vertex AI SDKでは start_chat() は client.chats.create() となる
     st.session_state.chat_session = client.start_chat(history=[])
 
 # Streamlitのセッションステートに履歴を初期化する
@@ -54,7 +53,6 @@ if prompt := st.chat_input("話しかけてください"):
     with st.chat_message("assistant"):
         with st.spinner("AIがあなたの言葉を受け止めています..."):
             # セッションを使ってGeminiにリクエスト送信
-            # send_message() は Vertex AI SDKでも共通です
             response = st.session_state.chat_session.send_message(prompt)
             
             # 結果を表示

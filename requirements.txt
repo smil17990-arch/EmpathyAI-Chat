@@ -1,4 +1,5 @@
-google-generativeai
+# Streamlit Cloudの環境と互換性の高い代替パッケージ
+google-cloud-aiplatformgoogle-generativeai
 streamlit
 google-generativeai  <-- この名前が正解です
 

@@ -10,3 +10,6 @@ google-cloud-aiplatform
 
 # Streamlit Cloudの環境と互換性の高い代替パッケージ
 google-cloud-aiplatform
+# Streamlit Cloudの環境と互換性の高い代替パッケージ
+google-cloud-aiplatform
+

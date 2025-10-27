@@ -11,6 +11,7 @@ try:
     # 認証情報を初期化し、プロジェクトIDを設定（ここでキー認証が行われる）
     # ★ プロジェクトIDを必ず置き換えること
     aiplatform.init(project='digital-vim-471122-t5
+
 ', location='us-central1') 
     
     # クライアント初期化（Vertex AI SDKを使用）
@@ -60,4 +61,3 @@ if prompt := st.chat_input("話しかけてください"):
             
             # AIの応答を履歴に追加
             st.session_state.messages.append({"role": "assistant", "content": response.text})
-

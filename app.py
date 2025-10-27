@@ -10,7 +10,7 @@ st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
 try:
     # 認証情報を初期化し、プロジェクトIDを設定（ここでキー認証が行われる）
     # ★ プロジェクトIDを必ず置き換えること
-    aiplatform.init(project='digital-vim-471122-t5
+    aiplatform.init(project=digital-vim-471122-t5
 
 ', location='us-central1') 
     

@@ -1,9 +1,8 @@
 
-
-
 import os
 import streamlit as st
-from google.cloud import aiplatform # ← 代替SDKのインポート
+# Streamlit Cloudでの互換性の高い代替SDKを使用
+from google.cloud import aiplatform 
 
 # ページ設定 (最上部で実行)
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
@@ -11,8 +10,8 @@ st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
 # --- 1. クライアントの初期化（エラー処理を含む） ---
 try:
     # 認証情報を初期化し、プロジェクトIDを設定（ここでキー認証が行われる）
-    # ★ プロジェクトIDを必ず置き換えること
-    aiplatform.init(project='digital-vim-471122-t5', location='us-central1')
+    # プロジェクトIDを正確に置き換えること
+    aiplatform.init(project='digital-vim-471122-t5', location='us-central1') 
     
     # クライアント初期化（Vertex AI SDKを使用）
     client = aiplatform.GenerativeModel(
@@ -21,6 +20,7 @@ try:
     )
     
 except Exception as e:
+    # エラー時はアプリの実行を停止し、エラーメッセージを表示
     st.error(f"Geminiクライアントの初期化に失敗しました。詳細: {e}")
     st.warning("プロジェクトIDが正しいか、またはAPIキーが有効か確認してください。")
     st.stop()
@@ -33,7 +33,7 @@ st.markdown("悩みや出来事を話してください。私が受け止めま�
 if 'chat_session' not in st.session_state:
     st.session_state.chat_session = client.start_chat(history=[])
 
-# Streamlitのセッションステートに履歴を初期化する
+# Streamlitのセッションステートにメッセージ履歴を初期化する
 if 'messages' not in st.session_state:
     st.session_state.messages = []
 
@@ -61,8 +61,6 @@ if prompt := st.chat_input("話しかけてください"):
             
             # AIの応答を履歴に追加
             st.session_state.messages.append({"role": "assistant", "content": response.text})
-
-
 
 
 
